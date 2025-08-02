@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HustleVault - Empowering African Freelancers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maroon: {
+                            50: '#FDF2F2',
+                            100: '#FCE8E8',
+                            200: '#F8D5D5',
+                            300: '#F2B3B3',
+                            400: '#E98888',
+                            500: '#DC5A5A',
+                            600: '#C23636',
+                            700: '#A02828',
+                            800: '#800020',
+                            900: '#5C0015'
+                        },
+                        gold: {
+                            400: '#FFD700',
+                            500: '#F4C430'
+                        }
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="font-inter bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-maroon-800 to-maroon-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">HV</span>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-maroon-800">HustleVault</h1>
+                        <p class="text-xs text-gray-500">Empowering African Freelancers</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#dashboard" class="nav-link text-gray-700 hover:text-maroon-700 transition-colors duration-200 font-medium">Dashboard</a>
+                    <a href="#jobs" class="nav-link text-gray-700 hover:text-maroon-700 transition-colors duration-200 font-medium">Jobs</a>
+                    <a href="#templates" class="nav-link text-gray-700 hover:text-maroon-700 transition-colors duration-200 font-medium">Templates</a>
+                    <a href="#guides" class="nav-link text-gray-700 hover:text-maroon-700 transition-colors duration-200 font-medium">Guides</a>
+                    <a href="#payments" class="nav-link text-gray-700 hover:text-maroon-700 transition-colors duration-200 font-medium">Payments</a>
+                    <a href="#admin" class="nav-link text-gray-700 hover:text-maroon-700 transition-colors duration-200 font-medium">Admin</a>
+                </div>
+
+                <!-- User Menu -->
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <!-- Profile image is not guaranteed to be square, using object-fit: cover -->
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150" alt="User Profile" class="w-8 h-8 rounded-full object-cover">
+                        <span class="text-sm font-medium text-gray-700" data-bind="user.name">John Doe</span>
+                    </div>
+                    <button class="text-gray-500 hover:text-maroon-700 transition-colors">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button class="text-gray-500 hover:text-maroon-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- @COMPONENT: DashboardSection -->
+        <section id="dashboard" class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">Welcome Back, <span data-bind="user.name" class="text-maroon-800">John</span>!</h2>
+                        <p class="text-gray-600 mt-2">Here's your freelancing journey at a glance</p>
+                    </div>
+                    <div class="hidden sm:block">
+                        <div class="bg-gradient-to-r from-maroon-800 to-maroon-600 text-white px-6 py-3 rounded-xl">
+                            <div class="text-sm font-medium">Current Earnings</div>
+                            <div class="text-2xl font-bold" data-bind="user.earnings">$2,450</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-blue-600 text-sm font-medium">Active Applications</p>
+                                <p class="text-2xl font-bold text-blue-800" data-bind="user.activeApplications">7</p>
+                            </div>
+                            <i class="fas fa-paper-plane text-blue-500 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl border border-green-200">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-green-600 text-sm font-medium">Completed Jobs</p>
+                                <p class="text-2xl font-bold text-green-800" data-bind="user.completedJobs">23</p>
+                            </div>
+                            <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl border border-yellow-200">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-yellow-600 text-sm font-medium">Pending Review</p>
+                                <p class="text-2xl font-bold text-yellow-800" data-bind="user.pendingReview">3</p>
+                            </div>
+                            <i class="fas fa-clock text-yellow-500 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-maroon-50 to-maroon-100 p-6 rounded-xl border border-maroon-200">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-maroon-600 text-sm font-medium">Success Rate</p>
+                                <p class="text-2xl font-bold text-maroon-800" data-bind="user.successRate">94%</p>
+                            </div>
+                            <i class="fas fa-trophy text-maroon-500 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="border-t pt-8">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-6">Recent Activity</h3>
+                    <div class="space-y-4">
+                        <!-- @MAP: recentActivities.map(activity => ( -->
+                        <div data-mock="true" class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-green-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900">Payment Released: Logo Design Project</p>
+                                    <p class="text-sm text-gray-500">2 hours ago</p>
+                                </div>
+                            </div>
+                            <span class="text-green-600 font-semibold">+$450</span>
+                        </div>
+                        <div data-mock="true" class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-paper-plane text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900">Applied to: Website Development</p>
+                                    <p class="text-sm text-gray-500">1 day ago</p>
+                                </div>
+                            </div>
+                            <span class="text-blue-600 font-semibold">Applied</span>
+                        </div>
+                        <div data-mock="true" class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-upload text-yellow-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900">Work Submitted: Content Writing</p>
+                                    <p class="text-sm text-gray-500">3 days ago</p>
+                                </div>
+                            </div>
+                            <span class="text-yellow-600 font-semibold">Under Review</span>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- @END_COMPONENT: DashboardSection -->
+
+        <!-- @COMPONENT: JobBoardSection -->
+        <section id="jobs" class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">Curated Job Board</h2>
+                        <p class="text-gray-600 mt-2">High-quality opportunities tailored for African freelancers</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <select class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-maroon-500 focus:border-maroon-500">
+                            <option>All Categories</option>
+                            <option>Design</option>
+                            <option>Development</option>
+                            <option>Writing</option>
+                            <option>Marketing</option>
+                        </select>
+                        <button class="bg-maroon-800 text-white px-6 py-2 rounded-lg hover:bg-maroon-700 transition-colors font-medium">
+                            <i class="fas fa-filter mr-2"></i>Filter
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Job Cards Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- @MAP: jobs.map(job => ( -->
+                    <div data-mock="true" class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300 hover:border-maroon-300">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Senior UI/UX Designer for SaaS Platform</h3>
+                                <div class="flex items-center space-x-4 text-sm text-gray-600 mb-3">
+                                    <span class="flex items-center"><i class="fas fa-building mr-1"></i>TechCorp Inc.</span>
+                                    <span class="flex items-center"><i class="fas fa-clock mr-1"></i>2-3 weeks</span>
+                                    <span class="flex items-center"><i class="fas fa-map-marker-alt mr-1"></i>Remote</span>
+                                </div>
+                                <p class="text-gray-700 mb-4 line-clamp-3">We're looking for an experienced UI/UX designer to redesign our SaaS dashboard and improve user experience. Must have experience with Figma and modern design principles.</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">UI/UX</span>
+                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Figma</span>
+                                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Remote</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="text-2xl font-bold text-maroon-800">$2,500</div>
+                                <div class="text-sm text-gray-500">Fixed Price</div>
+                            </div>
+                            <button data-event="click:applyToJob" class="bg-maroon-800 text-white px-6 py-2 rounded-lg hover:bg-maroon-700 transition-colors font-medium">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <div data-mock="true" class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300 hover:border-maroon-300">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Content Writer for Fintech Blog</h3>
+                                <div class="flex items-center space-x-4 text-sm text-gray-600 mb-3">
+                                    <span class="flex items-center"><i class="fas fa-building mr-1"></i>FinanceHub</span>
+                                    <span class="flex items-center"><i class="fas fa-clock mr-1"></i>1-2 weeks</span>
+                                    <span class="flex items-center"><i class="fas fa-map-marker-alt mr-1"></i>Remote</span>
+                                </div>
+                                <p class="text-gray-700 mb-4 line-clamp-3">Looking for a skilled content writer to create engaging blog posts about cryptocurrency, DeFi, and financial technology trends for our African audience.</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Content Writing</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">Fintech</span>
+                                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Remote</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="text-2xl font-bold text-maroon-800">$800</div>
+                                <div class="text-sm text-gray-500">Fixed Price</div>
+                            </div>
+                            <button data-event="click:applyToJob" class="bg-maroon-800 text-white px-6 py-2 rounded-lg hover:bg-maroon-700 transition-colors font-medium">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <div data-mock="true" class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300 hover:border-maroon-300">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">React Developer for E-commerce Platform</h3>
+                                <div class="flex items-center space-x-4 text-sm text-gray-600 mb-3">
+                                    <span class="flex items-center"><i class="fas fa-building mr-1"></i>ShopAfrica</span>
+                                    <span class="flex items-center"><i class="fas fa-clock mr-1"></i>4-6 weeks</span>
+                                    <span class="flex items-center"><i class="fas fa-map-marker-alt mr-1"></i>Remote</span>
+                                </div>
+                                <p class="text-gray-700 mb-4 line-clamp-3">Build a modern e-commerce platform using React, Next.js, and Stripe integration. Experience with African payment gateways preferred.</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">React</span>
+                                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Next.js</span>
+                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">E-commerce</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="text-2xl font-bold text-maroon-800">$4,200</div>
+                                <div class="text-sm text-gray-500">Fixed Price</div>
+                            </div>
+                            <button data-event="click:applyToJob" class="bg-maroon-800 text-white px-6 py-2 rounded-lg hover:bg-maroon-700 transition-colors font-medium">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <div data-mock="true" class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300 hover:border-maroon-300">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Social Media Manager for Startup</h3>
+                                <div class="flex items-center space-x-4 text-sm text-gray-600 mb-3">
+                                    <span class="flex items-center"><i class="fas fa-building mr-1"></i>GrowthLab</span>
+                                    <span class="flex items-center"><i class="fas fa-clock mr-1"></i>Ongoing</span>
+                                    <span class="flex items-center"><i class="fas fa-map-marker-alt mr-1"></i>Remote</span>
+                                </div>
+                                <p class="text-gray-700 mb-4 line-clamp-3">Manage social media presence across platforms, create engaging content, and grow our community of African entrepreneurs.</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium">Social Media</span>
+                                    <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Content Creation</span>
+                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Marketing</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="text-2xl font-bold text-maroon-800">$1,500</div>
+                                <div class="text-sm text-gray-500">Monthly</div>
+                            </div>
+                            <button data-event="click:applyToJob" class="bg-maroon-800 text-white px-6 py-2 rounded-lg hover:bg-maroon-700 transition-colors font-medium">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+                    <!-- @END_MAP )) -->
+                </div>
+            </div>
+        </section>
+        <!-- @END_COMPONENT: JobBoardSection -->
+
+        <!-- @COMPONENT: TemplatesSection -->
+        <section id="templates" class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">Professional Templates</h2>
+                        <p class="text-gray-600 mt-2">Download high-quality templates to boost your freelancing success</p>
+                    </div>
+                    <button class="bg-maroon-800 text-white px-6 py-3 rounded-lg hover:bg-maroon-700 transition-colors font-medium">
+                        <i class="fas fa-upload mr-2"></i>Upload Template
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- @MAP: templates.map(template => ( -->
+                    <div data-mock="true" class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-file-pdf text-red-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">Modern CV Template</h3>
+                                <p class="text-sm text-gray-500">Professional resume design</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 text-sm mb-4">Clean, modern CV template optimized for African freelancers. Includes sections for skills, portfolio, and testimonials.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">PDF • 2.3 MB</span>
+                            <button data-event="click:downloadTemplate" class="bg-maroon-800 text-white px-4 py-2 rounded-lg hover:bg-maroon-700 transition-colors text-sm font-medium">
+                                <i class="fas fa-download mr-1"></i>Download
+                            </button>
+                        </div>
+                    </div>
+
+                    <div data-mock="true" class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-file-word text-blue-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">Project Proposal Template</h3>
+                                <p class="text-sm text-gray-500">Winning proposal format</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 text-sm mb-4">Comprehensive proposal template that helps you win more projects. Includes pricing strategies and client communication tips.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">DOCX • 1.8 MB</span>
+                            <button data-event="click:downloadTemplate" class="bg-maroon-800 text-white px-4 py-2 rounded-lg hover:bg-maroon-700 transition-colors text-sm font-medium">
+                                <i class="fas fa-download mr-1"></i>Download
+                            </button>
+                        </div>
+                    </div>
+
+                    <div data-mock="true" class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-file-excel text-green-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">Invoice Template</h3>
+                                <p class="text-sm text-gray-500">Professional billing format</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 text-sm mb-4">Professional invoice template with automatic calculations, payment terms, and African tax considerations.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">XLSX • 1.2 MB</span>
+                            <button data-event="click:downloadTemplate" class="bg-maroon-800 text-white px-4 py-2 rounded-lg hover:bg-maroon-700 transition-colors text-sm font-medium">
+                                <i class="fas fa-download mr-1"></i>Download
+                            </button>
+                        </div>
+                    </div>
+
+                    <div data-mock="true" class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-file-pdf text-purple-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">Portfolio Showcase</h3>
+                                <p class="text-sm text-gray-500">Visual portfolio template</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 text-sm mb-4">Beautiful portfolio template to showcase your best work. Perfect for designers, developers, and creative freelancers.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">PDF • 3.1 MB</span>
+                            <button data-event="click:downloadTemplate" class="bg-maroon-800 text-white px-4 py-2 rounded-lg hover:bg-maroon-700 transition-colors text-sm font-medium">
+                                <i class="fas fa-download mr-1"></i>Download
+                            </button>
+                        </div>
+                    </div>
+
+                    <div data-mock="true" class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-file-word text-orange-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">Contract Template</h3>
+                                <p class="text-sm text-gray-500">Legal protection document</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 text-sm mb-4">Comprehensive freelance contract template with payment terms, scope definitions, and dispute resolution clauses.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">DOCX • 1.5 MB</span>
+                            <button data-event="click:downloadTemplate" class="bg-maroon-800 text-white px-4 py-2 rounded-lg hover:bg-maroon-700 transition-colors text-sm font-medium">
+                                <i class="fas fa-download mr-1"></i>Download
+                            </button>
+                        </div>
+                    </div>
+
+                    <div data-mock="true" class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-file-pdf text-indigo-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">Rate Card Template</h3>
+                                <p class="text-sm text-gray-500">Pricing strategy guide</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 text-sm mb-4">Professional rate card template to help you price your services competitively in the African freelance market.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">PDF • 1.7 MB</span>
+                            <button data-event="click:downloadTemplate" class="bg-maroon-800 text-white px-4 py-2 rounded-lg hover:bg-maroon-700 transition-colors text-sm font-medium">
+                                <i class="fas fa-download mr-1"></i>Download
+                            </button>
+                        </div>
+                    </div>
+                    <!-- @END_MAP )) -->
+                </div>
+            </div>
+        </section>
+        <!-- @END_COMPONENT: TemplatesSection -->
+
+        <!-- @COMPONENT: GuidesSection -->
+        <section id="guides" class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">Freelance Guides</h2>
+                        <p class="text-gray-600 mt-2">Essential knowledge for African freelancers to succeed globally</p>
+                    </div>
+                    <button class="bg-maroon-800 text-white px-6 py-3 rounded-lg hover:bg-maroon-700 transition-colors font-medium">
+                        <i class="fas fa-plus mr-2"></i>Add Guide
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Featured Guide -->
+                    <div data-mock="true" class="bg-gradient-to-br from-maroon-50 to-maroon-100 rounded-xl p-6 border border-maroon-200">
+                        <!-- Professional African freelancer working on laptop in modern office with city view -->
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Professional freelancer working" class="rounded-lg w-full h-48 object-cover mb-4" />
+                        <div class="flex items-center mb-3">
+                            <span class="bg-maroon-800 text-white px-3 py-1 rounded-full text-sm font-medium mr-3">Featured</span>
+                            <span class="text-sm text-gray-600">15 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Complete Guide to Remote Work Success</h3>
+                        <p class="text-gray-700 mb-4">Everything you need to know about building a successful remote freelance career, from setting up your workspace to managing international clients.</p>
+                        <button class="text-maroon-800 font-semibold hover:text-maroon-600 transition-colors">
+                            Read Full Guide <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+
+                    <!-- Guide List -->
+                    <div class="space-y-4">
+                        <!-- @MAP: guides.map(guide => ( -->
+                        <div data-mock="true" class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-300">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-money-bill-wave text-blue-600 text-lg"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-gray-900 mb-1">Pricing Your Services in Africa</h4>
+                                    <p class="text-sm text-gray-600 mb-2">Learn how to price competitively while maintaining profitability in the African market.</p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs text-gray-500">8 min read</span>
+                                        <button class="text-maroon-700 text-sm font-medium hover:text-maroon-600">Read →</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div data-mock="true" class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-300">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-16 h-16 bg-gradient-to-br from-green-100 to-green-200 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-handshake text-green-600 text-lg"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-gray-900 mb-1">Building Client Relationships</h4>
+                                    <p class="text-sm text-gray-600 mb-2">Strategies for maintaining long-term client relationships and getting repeat business.</p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs text-gray-500">12 min read</span>
+                                        <button class="text-maroon-700 text-sm font-medium hover:text-maroon-600">Read →</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div data-mock="true" class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-300">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-16 h-16 bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-laptop-code text-purple-600 text-lg"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-gray-900 mb-1">Essential Freelance Tools</h4>
+                                    <p class="text-sm text-gray-600 mb-2">Must-have tools and software for productive freelancing from anywhere in Africa.</p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs text-gray-500">10 min read</span>
+                                        <button class="text-maroon-700 text-sm font-medium hover:text-maroon-600">Read →</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div data-mock="true" class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-300">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-16 h-16 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-chart-line text-yellow-600 text-lg"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-gray-900 mb-1">Growing Your Freelance Business</h4>
+                                    <p class="text-sm text-gray-600 mb-2">Scale from solo freelancer to agency owner with proven growth strategies.</p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs text-gray-500">15 min read</span>
+                                        <button class="text-maroon-700 text-sm font-medium hover:text-maroon-600">Read →</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- @END_COMPONENT: GuidesSection -->
+
+        <!-- @COMPONENT: PaymentsSection -->
+        <section id="payments" class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">Payment Solutions</h2>
+                        <p class="text-gray-600 mt-2">Secure payment methods and tips for African freelancers</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-green-600 text-sm"></i>
+                        </div>
+                        <span class="text-sm text-green-600 font-medium">Secure & Verified</span>
+                    </div>
+                </div>
+
+                <!-- Payment Status Tracking -->
+                <div class="bg-gradient-to-r from-maroon-50 to-maroon-100 rounded-xl p-6 mb-8 border border-maroon-200">
+                    <h3 class="text-xl font-semibold text-maroon-800 mb-4">Payment Status Tracking</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <!-- @MAP: paymentStatuses.map(status => ( -->
+                        <div data-mock="true" class="bg-white rounded-lg p-4 border border-maroon-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm font-medium text-gray-700">Logo Design Project</span>
+                                <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">Payment Released</span>
+                            </div>
+                            <div class="text-lg font-bold text-maroon-800">$450.00</div>
+                            <div class="text-xs text-gray-500 mt-1">Released 2 hours ago</div>
+                        </div>
+
+                        <div data-mock="true" class="bg-white rounded-lg p-4 border border-maroon-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm font-medium text-gray-700">Content Writing</span>
+                                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium">Pending Review</span>
+                            </div>
+                            <div class="text-lg font-bold text-maroon-800">$275.00</div>
+                            <div class="text-xs text-gray-500 mt-1">Submitted 1 day ago</div>
+                        </div>
+
+                        <div data-mock="true" class="bg-white rounded-lg p-4 border border-maroon-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm font-medium text-gray-700">Website Development</span>
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">In Progress</span>
+                            </div>
+                            <div class="text-lg font-bold text-maroon-800">$2,100.00</div>
+                            <div class="text-xs text-gray-500 mt-1">Started 1 week ago</div>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+                </div>
+
+                <!-- Payment Methods -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Recommended Methods -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-6">Recommended Payment Methods</h3>
+                        <div class="space-y-4">
+                            <!-- @MAP: paymentMethods.map(method => ( -->
+                            <div data-mock="true" class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-300">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-credit-card text-blue-600 text-lg"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-900">Payoneer</h4>
+                                        <p class="text-sm text-gray-600">Global payment platform with local withdrawal options</p>
+                                        <div class="flex items-center space-x-4 mt-2">
+                                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Low Fees</span>
+                                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Africa Friendly</span>
+                                        </div>
+                                    </div>
+                                    <button class="text-maroon-700 font-medium text-sm hover:text-maroon-600">
+                                        Learn More →
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div data-mock="true" class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-300">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-university text-green-600 text-lg"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-900">Wise (formerly TransferWise)</h4>
+                                        <p class="text-sm text-gray-600">Multi-currency account with competitive exchange rates</p>
+                                        <div class="flex items-center space-x-4 mt-2">
+                                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Best Rates</span>
+                                            <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">Multi-Currency</span>
+                                        </div>
+                                    </div>
+                                    <button class="text-maroon-700 font-medium text-sm hover:text-maroon-600">
+                                        Learn More →
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div data-mock="true" class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-300">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                                        <i class="fab fa-bitcoin text-yellow-600 text-lg"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-900">Cryptocurrency</h4>
+                                        <p class="text-sm text-gray-600">Bitcoin, USDC, and other stable coins for instant payments</p>
+                                        <div class="flex items-center space-x-4 mt-2">
+                                            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Instant</span>
+                                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">Advanced</span>
+                                        </div>
+                                    </div>
+                                    <button class="text-maroon-700 font-medium text-sm hover:text-maroon-600">
+                                        Learn More →
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- @END_MAP )) -->
+                        </div>
+                    </div>
+
+                    <!-- Payment Tips -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-6">Payment Tips & Security</h3>
+                        <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200 mb-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-lightbulb text-white text-sm"></i>
+                                </div>
+                                <h4 class="font-semibold text-blue-800">Pro Tips</h4>
+                            </div>
+                            <ul class="space-y-3 text-sm text-blue-700">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-blue-600 mr-2 mt-0.5"></i>
+                                    Always request 25-50% upfront payment before starting work
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-blue-600 mr-2 mt-0.5"></i>
+                                    Use HustleVault's escrow system for payment protection
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-blue-600 mr-2 mt-0.5"></i>
+                                    Keep detailed records of all transactions for tax purposes
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-blue-600 mr-2 mt-0.5"></i>
+                                    Consider exchange rate fluctuations when pricing in USD
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Security Features -->
+                        <div class="border border-gray-200 rounded-xl p-6">
+                            <h4 class="font-semibold text-gray-900 mb-4 flex items-center">
+                                <i class="fas fa-shield-alt text-green-600 mr-2"></i>
+                                HustleVault Payment Guarantee
+                            </h4>
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <span class="text-green-600 text-xs font-bold">1</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Submit Work</p>
+                                        <p class="text-xs text-gray-600">Upload your completed work and mark as "Submitted for Review"</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-6 h-6 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <span class="text-yellow-600 text-xs font-bold">2</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Admin Review</p>
+                                        <p class="text-xs text-gray-600">Our team reviews the work quality and client requirements</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <span class="text-green-600 text-xs font-bold">3</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Payment Released</p>
+                                        <p class="text-xs text-gray-600">Once approved, payment is released to your preferred method</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- @END_COMPONENT: PaymentsSection -->
+
+        <!-- @COMPONENT: AdminSection -->
+        <section id="admin" class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">Admin Panel</h2>
+                        <p class="text-gray-600 mt-2">Manage jobs, applications, and platform content</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-maroon-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-crown text-maroon-600 text-sm"></i>
+                        </div>
+                        <span class="text-sm text-maroon-600 font-medium">Admin Access</span>
+                    </div>
+                </div>
+
+                <!-- Admin Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl border border-purple-200">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-purple-600 text-sm font-medium">Total Jobs</p>
+                                <p class="text-2xl font-bold text-purple-800" data-bind="admin.totalJobs">47</p>
+                            </div>
+                            <i class="fas fa-briefcase text-purple-500 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-blue-600 text-sm font-medium">Pending Applications</p>
+                                <p class="text-2xl font-bold text-blue-800" data-bind="admin.pendingApplications">12</p>
+                            </div>
+                            <i class="fas fa-clock text-blue-500 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl border border-green-200">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-green-600 text-sm font-medium">Active Freelancers</p>
+                                <p class="text-2xl font-bold text-green-800" data-bind="admin.activeFreelancers">284</p>
+                            </div>
+                            <i class="fas fa-users text-green-500 text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl border border-yellow-200">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-yellow-600 text-sm font-medium">Payments Released</p>
+                                <p class="text-2xl font-bold text-yellow-800" data-bind="admin.paymentsReleased">$89,450</p>
+                            </div>
+                            <i class="fas fa-dollar-sign text-yellow-500 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Actions -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Job Management -->
+                    <div class="border border-gray-200 rounded-xl p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
+                            <i class="fas fa-briefcase text-maroon-600 mr-2"></i>
+                            Job Management
+                        </h3>
+                        
+                        <!-- Add New Job Form -->
+                        <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                            <h4 class="font-medium text-gray-900 mb-4">Add New Job</h4>
+                            <form class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Job Title</label>
+                                    <input type="text" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-maroon-500 focus:border-maroon-500" placeholder="Enter job title" data-mock="true">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Payment Amount</label>
+                                    <input type="number" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-maroon-500 focus:border-maroon-500" placeholder="e.g., 1500" data-mock="true">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                                    <textarea rows="3" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-maroon-500 focus:border-maroon-500" placeholder="Job description..." data-mock="true"></textarea>
+                                </div>
+                                <button type="submit" data-event="click:addJob" class="w-full bg-maroon-800 text-white py-2 rounded-lg hover:bg-maroon-700 transition-colors text-sm font-medium">
+                                    <i class="fas fa-plus mr-1"></i>Add Job
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Recent Jobs -->
+                        <div>
+                            <h4 class="font-medium text-gray-900 mb-4">Recent Jobs</h4>
+                            <div class="space-y-3">
+                                <!-- @MAP: recentJobs.map(job => ( -->
+                                <div data-mock="true" class="flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">UI/UX Designer for SaaS</p>
+                                        <p class="text-xs text-gray-500">$2,500 • 5 applications</p>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="text-blue-600 hover:text-blue-800 text-xs">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="text-red-600 hover:text-red-800 text-xs">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div data-mock="true" class="flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Content Writer for Blog</p>
+                                        <p class="text-xs text-gray-500">$800 • 8 applications</p>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="text-blue-600 hover:text-blue-800 text-xs">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="text-red-600 hover:text-red-800 text-xs">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- @END_MAP )) -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Application Review -->
+                    <div class="border border-gray-200 rounded-xl p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
+                            <i class="fas fa-tasks text-maroon-600 mr-2"></i>
+                            Application Review
+                        </h3>
+
+                        <!-- Pending Reviews -->
+                        <div class="space-y-4">
+                            <!-- @MAP: pendingReviews.map(review => ( -->
+                            <div data-mock="true" class="border border-gray-200 rounded-lg p-4">
+                                <div class="flex items-start justify-between mb-3">
+                                    <div>
+                                        <p class="font-medium text-gray-900">Logo Design Project</p>
+                                        <p class="text-sm text-gray-600">by John Doe • Submitted 2 hours ago</p>
+                                        <p class="text-sm text-maroon-700 font-medium">Payment: $450</p>
+                                    </div>
+                                    <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium">Pending Review</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button data-event="click:approveWork" class="bg-green-600 text-white px-3 py-1 rounded text-sm font-medium hover:bg-green-700 transition-colors">
+                                        <i class="fas fa-check mr-1"></i>Approve & Release Payment
+                                    </button>
+                                    <button data-event="click:requestRevision" class="bg-orange-600 text-white px-3 py-1 rounded text-sm font-medium hover:bg-orange-700 transition-colors">
+                                        <i class="fas fa-edit mr-1"></i>Request Revision
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div data-mock="true" class="border border-gray-200 rounded-lg p-4">
+                                <div class="flex items-start justify-between mb-3">
+                                    <div>
+                                        <p class="font-medium text-gray-900">Website Development</p>
+                                        <p class="text-sm text-gray-600">by Sarah Wilson • Submitted 1 day ago</p>
+                                        <p class="text-sm text-maroon-700 font-medium">Payment: $2,100</p>
+                                    </div>
+                                    <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium">Pending Review</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button data-event="click:approveWork" class="bg-green-600 text-white px-3 py-1 rounded text-sm font-medium hover:bg-green-700 transition-colors">
+                                        <i class="fas fa-check mr-1"></i>Approve & Release Payment
+                                    </button>
+                                    <button data-event="click:requestRevision" class="bg-orange-600 text-white px-3 py-1 rounded text-sm font-medium hover:bg-orange-700 transition-colors">
+                                        <i class="fas fa-edit mr-1"></i>Request Revision
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- @END_MAP )) -->
+                        </div>
+
+                        <!-- Template Management -->
+                        <div class="mt-8 pt-6 border-t border-gray-200">
+                            <h4 class="font-medium text-gray-900 mb-4 flex items-center">
+                                <i class="fas fa-file-upload text-maroon-600 mr-2"></i>
+                                Template Management
+                            </h4>
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-maroon-400 transition-colors cursor-pointer" data-implementation="File upload component">
+                                <i class="fas fa-cloud-upload-alt text-gray-400 text-2xl mb-2"></i>
+                                <p class="text-sm text-gray-600">Click to upload templates (PDF, DOCX)</p>
+                                <p class="text-xs text-gray-500 mt-1">Max file size: 10MB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- @END_COMPONENT: AdminSection -->
+
+        <!-- @COMPONENT: QASection -->
+        <section id="qa" class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900">Mentorship & Q&A</h2>
+                        <p class="text-gray-600 mt-2">Get guidance from experienced freelancers and industry experts</p>
+                    </div>
+                    <button class="bg-maroon-800 text-white px-6 py-3 rounded-lg hover:bg-maroon-700 transition-colors font-medium">
+                        <i class="fas fa-question-circle mr-2"></i>Ask Question
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Featured Mentors -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-6">Featured Mentors</h3>
+                        <div class="space-y-4">
+                            <!-- @MAP: mentors.map(mentor => ( -->
+                            <div data-mock="true" class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-300">
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <!-- Professional African mentor headshot with warm smile -->
+                                    <img src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150" alt="Mentor Adaora Okafor" class="w-12 h-12 rounded-full object-cover">
+                                    <div>
+                                        <p class="font-medium text-gray-900">Adaora Okafor</p>
+                                        <p class="text-sm text-gray-600">Senior UX Designer</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600">5.0 (24 sessions)</span>
+                                </div>
+                                <p class="text-sm text-gray-700 mb-3">Specializes in UI/UX design and client relationship management. 8+ years of freelance experience.</p>
+                                <button class="w-full bg-maroon-100 text-maroon-800 py-2 rounded-lg hover:bg-maroon-200 transition-colors text-sm font-medium">
+                                    Book Session
+                                </button>
+                            </div>
+
+                            <div data-mock="true" class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-300">
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <!-- Professional African male mentor in business attire -->
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150" alt="Mentor Kwame Asante" class="w-12 h-12 rounded-full object-cover">
+                                    <div>
+                                        <p class="font-medium text-gray-900">Kwame Asante</p>
+                                        <p class="text-sm text-gray-600">Full-Stack Developer</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600">4.9 (31 sessions)</span>
+                                </div>
+                                <p class="text-sm text-gray-700 mb-3">Expert in React, Node.js, and mobile app development. Helps with technical career transitions.</p>
+                                <button class="w-full bg-maroon-100 text-maroon-800 py-2 rounded-lg hover:bg-maroon-200 transition-colors text-sm font-medium">
+                                    Book Session
+                                </button>
+                            </div>
+                            <!-- @END_MAP )) -->
+                        </div>
+                    </div>
+
+                    <!-- Recent Q&A -->
+                    <div class="lg:col-span-2">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-6">Recent Questions & Answers</h3>
+                        <div class="space-y-6">
+                            <!-- @MAP: qaItems.map(qa => ( -->
+                            <div data-mock="true" class="border border-gray-200 rounded-lg p-6">
+                                <div class="flex items-start space-x-4">
+                                    <!-- Professional African freelancer asking question -->
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150" alt="User asking question" class="w-10 h-10 rounded-full object-cover">
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2 mb-2">
+                                            <p class="font-medium text-gray-900">Michael Ochieng</p>
+                                            <span class="text-sm text-gray-500">2 hours ago</span>
+                                        </div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">How do I price my services competitively in the African market?</h4>
+                                        <p class="text-gray-700 text-sm mb-4">I'm a graphic designer based in Kenya and struggling to find the right pricing strategy. How do I balance competitive rates with fair compensation?</p>
+                                        
+                                        <!-- Answer -->
+                                        <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-maroon-500">
+                                            <div class="flex items-center space-x-2 mb-2">
+                                                <span class="text-sm font-medium text-maroon-700">Expert Answer by Adaora Okafor</span>
+                                                <i class="fas fa-verified text-maroon-600 text-sm"></i>
+                                            </div>
+                                            <p class="text-sm text-gray-700">Start by researching global rates for your skill level, then adjust based on your local cost of living. I recommend starting at 60-70% of US rates and gradually increasing as you build your portfolio and testimonials. Focus on value-based pricing rather than hourly rates when possible.</p>
+                                        </div>
+                                        
+                                        <div class="flex items-center space-x-4 mt-4">
+                                            <button class="text-gray-500 hover:text-maroon-600 text-sm flex items-center">
+                                                <i class="fas fa-thumbs-up mr-1"></i>Helpful (12)
+                                            </button>
+                                            <button class="text-gray-500 hover:text-maroon-600 text-sm flex items-center">
+                                                <i class="fas fa-reply mr-1"></i>Reply
+                                            </button>
+                                            <button class="text-gray-500 hover:text-maroon-600 text-sm flex items-center">
+                                                <i class="fas fa-share mr-1"></i>Share
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div data-mock="true" class="border border-gray-200 rounded-lg p-6">
+                                <div class="flex items-start space-x-4">
+                                    <!-- Professional African female freelancer asking question -->
+                                    <img src="https://pixabay.com/get/gd50b1aa853a2f8a5b65b0ebe5f531650ef3ab847a76ee3062271e890ceb285237ec04c2bc9b5e39a8162aa9b4b98654b9f6e5db12e0f172769423f84897b9afa_1280.jpg" alt="User asking question" class="w-10 h-10 rounded-full object-cover">
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2 mb-2">
+                                            <p class="font-medium text-gray-900">Fatima Hassan</p>
+                                            <span class="text-sm text-gray-500">1 day ago</span>
+                                        </div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">Best payment methods for receiving international payments?</h4>
+                                        <p class="text-gray-700 text-sm mb-4">I'm based in Nigeria and want to start freelancing for international clients. What are the most reliable and cost-effective payment methods?</p>
+                                        
+                                        <!-- Multiple Answers -->
+                                        <div class="space-y-3">
+                                            <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-maroon-500">
+                                                <div class="flex items-center space-x-2 mb-2">
+                                                    <span class="text-sm font-medium text-maroon-700">Expert Answer by Kwame Asante</span>
+                                                    <i class="fas fa-verified text-maroon-600 text-sm"></i>
+                                                </div>
+                                                <p class="text-sm text-gray-700">I highly recommend Payoneer for Nigerian freelancers. Low fees, reliable transfers, and you can get a local NGN account. Wise is also excellent for multi-currency needs.</p>
+                                            </div>
+                                            
+                                            <div class="bg-blue-50 rounded-lg p-3 border-l-4 border-blue-500">
+                                                <p class="text-sm text-blue-700"><strong>Community Answer:</strong> I've been using Payoneer for 3 years without issues. The virtual USD account is a game-changer for getting paid directly by clients.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-center space-x-4 mt-4">
+                                            <button class="text-gray-500 hover:text-maroon-600 text-sm flex items-center">
+                                                <i class="fas fa-thumbs-up mr-1"></i>Helpful (8)
+                                            </button>
+                                            <button class="text-gray-500 hover:text-maroon-600 text-sm flex items-center">
+                                                <i class="fas fa-reply mr-1"></i>Reply
+                                            </button>
+                                            <button class="text-gray-500 hover:text-maroon-600 text-sm flex items-center">
+                                                <i class="fas fa-share mr-1"></i>Share
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- @END_MAP )) -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- @END_COMPONENT: QASection -->
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-maroon-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                            <span class="text-maroon-800 font-bold text-lg">HV</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">HustleVault</h3>
+                            <p class="text-maroon-200 text-sm">Empowering African Freelancers</p>
+                        </div>
+                    </div>
+                    <p class="text-maroon-200 mb-4">Connecting talented African freelancers with global opportunities while ensuring secure payments and career growth.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-maroon-200 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-maroon-200 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-maroon-200 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Platform</h4>
+                    <ul class="space-y-2 text-maroon-200">
+                        <li><a href="#jobs" class="hover:text-white transition-colors">Browse Jobs</a></li>
+                        <li><a href="#templates" class="hover:text-white transition-colors">Templates</a></li>
+                        <li><a href="#guides" class="hover:text-white transition-colors">Freelance Guides</a></li>
+                        <li><a href="#payments" class="hover:text-white transition-colors">Payment Methods</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-maroon-200">
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#qa" class="hover:text-white transition-colors">Q&A Forum</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-maroon-700 mt-8 pt-8 text-center text-maroon-200">
+                <p>&copy; 2024 HustleVault. All rights reserved. Built for African freelancers, by African talent.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        (function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+
+            // Smooth scrolling for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // TODO: Implement business logic for:
+            // - Job application submissions
+            // - File uploads for templates
+            // - Payment status tracking
+            // - Admin approval workflows
+            // - Real-time notifications
+            // - User authentication and role management
+
+            // Add interactive hover effects
+            const cards = document.querySelectorAll('[data-mock="true"]');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-2px)';
+                    card.style.transition = 'transform 200ms ease-in-out';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Simulate loading states for demo purposes
+            const buttons = document.querySelectorAll('button[data-event]');
+            buttons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const originalText = button.innerHTML;
+                    button.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i>Loading...';
+                    button.disabled = true;
+                    
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.disabled = false;
+                        // TODO: Replace with actual API calls and state management
+                    }, 1500);
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>
